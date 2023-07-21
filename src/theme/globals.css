@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply m-0 box-border scroll-smooth p-0 font-sans antialiased;
+  }
+
+  body,
+  html {
+    @apply overflow-x-hidden;
+  }
+
+  body,
+  input,
+  textarea,
+  button {
+    @apply text-base font-normal;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+}
