@@ -15,7 +15,7 @@ export const useCarouselMarquee = () => {
     engine.target.set(engine.location);
     engine.scrollLooper.loop(-1);
     engine.slideLooper.loop();
-    engine.translate.to(engine.location.get());
+    engine.translate.to(engine.location);
     requestAnimationId.current = requestAnimationFrame(animate);
   }, [embla]);
 

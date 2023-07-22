@@ -9,14 +9,14 @@ export const QuotationMarquee = () => {
   return (
     <div className="relative w-full py-1">
       <div className="w-full overflow-hidden" ref={viewportRef}>
-        <div className="flex select-none">
+        <div className="ml-3 flex select-none">
           {data.map(coinInfo => {
             const isPositive = coinInfo.percentageChanged24h > 0;
             const percentageLeading = isPositive ? '+' : '';
 
             return (
               <div
-                className="inline-flex min-w-fit gap-2 px-3"
+                className="relative inline-flex min-w-fit gap-2 overflow-hidden px-3"
                 key={`coin-info-item-${coinInfo.id}`}
               >
                 <span className="text-secondary-800 uppercase">
