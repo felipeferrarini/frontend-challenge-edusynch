@@ -1,0 +1,7 @@
+@tailwind components;
+
+@layer components {
+  .link {
+    @apply hover:text-primary-500 transition-colors duration-100 ease-in-out;
+  }
+}

@@ -1,0 +1,28 @@
+@tailwind components;
+
+@layer components {
+  .grid-system {
+    --grid-columns: 4;
+    --grid-column-width: 56px;
+    --grid-gutter-width: 16px;
+
+    @apply mx-auto grid h-full w-full grid-cols-[var(--grid-columns)] gap-[var(--grid-gutter-width)];
+    @apply max-w-[calc(var(--grid-column-width)*var(--grid-columns)+var(--grid-gutter-width)*(var(--grid-columns)-1))];
+  }
+
+  @screen tablet {
+    .grid-system {
+      --grid-columns: 8;
+      --grid-column-width: 56px;
+      --grid-gutter-width: 32px;
+    }
+  }
+
+  @screen desktop {
+    .grid-system {
+      --grid-columns: 12;
+      --grid-column-width: 72px;
+      --grid-gutter-width: 32px;
+    }
+  }
+}

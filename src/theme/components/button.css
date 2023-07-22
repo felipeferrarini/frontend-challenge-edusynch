@@ -1,0 +1,15 @@
+@tailwind components;
+
+@layer components {
+  .btn {
+    @apply h-8 px-4 py-0 transition-all duration-100 ease-in-out active:scale-95;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary-500 hover:bg-primary-600 rounded-2xl text-white;
+  }
+
+  .btn-link {
+    @apply btn text-text-base hover:text-primary-500 p-0;
+  }
+}

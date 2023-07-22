@@ -1,13 +1,10 @@
 import { type Config } from 'tailwindcss';
+import animations from './animations';
 import colors from './colors';
 import plugins from './plugins';
 
 const config: Config = {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}'
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     screens: {
       mobile: '320px',
@@ -16,10 +13,14 @@ const config: Config = {
       'desktop-xl': '1440px'
     },
     extend: {
+      ...animations,
+      colors,
       fontFamily: {
         sans: ['var(--font-sans)']
       },
-      colors
+      boxShadow: {
+        header: '0px 4px 8px 0px rgba(77, 77, 77, 0.10)'
+      }
     }
   },
   plugins: [plugins]

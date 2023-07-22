@@ -1,0 +1,19 @@
+@tailwind components;
+
+@layer components {
+  .drawer-overlay {
+    @apply bg-text-base data-[state=open]:animate-drawerOverlayShow tablet:top-[64px] tablet:h-[calc(100vh-64px)] fixed inset-0 top-[56px] h-[calc(100vh-56px)] opacity-90;
+  }
+
+  .drawer-content {
+    @apply border-secondary-200 tablet:top-[64px] tablet:h-[calc(100vh-64px)] fixed top-[56px] z-20 h-[calc(100vh-56px)] w-[70vw] border-t-[1px] bg-white;
+  }
+
+  .drawer-right {
+    @apply data-[state=open]:animate-drawerContentShowRight right-0;
+  }
+
+  .drawer-left {
+    @apply data-[state=open]:animate-drawerContentShowLeft left-0;
+  }
+}

@@ -1,5 +1,6 @@
+@import url('./components/components.css');
+
 @tailwind base;
-@tailwind components;
 @tailwind utilities;
 
 @layer base {
@@ -16,7 +17,7 @@
   input,
   textarea,
   button {
-    @apply text-base font-normal;
+    @apply text-text-base text-base font-normal;
   }
 
   a {
