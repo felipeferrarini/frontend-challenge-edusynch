@@ -1,0 +1,28 @@
+@tailwind components;
+
+@layer components {
+  .heading-1 {
+    @apply text-[48px] leading-[56px] tracking-[-1];
+  }
+  .heading-2 {
+    @apply text-[40px] leading-[48px] tracking-[-1];
+  }
+  .heading-3 {
+    @apply text-[32px] leading-[40px] tracking-normal;
+  }
+  .heading-4 {
+    @apply text-[24px] leading-[32px] tracking-normal;
+  }
+  .heading-5 {
+    @apply text-[20px] leading-[24px] tracking-normal;
+  }
+  .body {
+    @apply text-base;
+  }
+  .paragraph {
+    @apply text-sm;
+  }
+  .label-small {
+    @apply text-xs leading-[14px];
+  }
+}

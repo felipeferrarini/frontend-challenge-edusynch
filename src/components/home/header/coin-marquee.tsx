@@ -1,8 +1,10 @@
+'use client';
+
 import { useCarouselMarquee } from '@/hooks/use-carousel-marquee';
 import { useGetTrendingCoins } from '@/services/coin-service';
 import { formatCurrency } from '@/utils/number-utils';
 
-export const QuotationMarquee = () => {
+export const CoinMarquee = () => {
   const { viewportRef } = useCarouselMarquee();
   const { data = [] } = useGetTrendingCoins();
 

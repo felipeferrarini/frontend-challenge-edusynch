@@ -1,9 +1,12 @@
+'use client';
+
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback, useEffect, useRef } from 'react';
 
 export const useCarouselMarquee = () => {
   const [viewportRef, embla] = useEmblaCarousel({
-    loop: true
+    loop: true,
+    dragFree: true
   });
   const requestAnimationId = useRef(0);
 

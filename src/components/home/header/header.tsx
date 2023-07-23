@@ -1,26 +1,14 @@
-'use client';
-
 import { Logo } from '@/components/ui/common';
 import { homeLinks } from '@/config/constants';
-import { useScrollPosition } from '@/hooks/use-scroll-position';
-import cx from 'classnames';
 import Link from 'next/link';
+import { CoinMarquee } from './coin-marquee';
 import { MobileNavigation } from './mobile-navigation';
-import { QuotationMarquee } from './quotation-marquee';
 
 export const HomeHeader = (): JSX.Element => {
-  const scrollPosition = useScrollPosition();
-
   return (
-    <header
-      className={cx({
-        'fixed z-10 flex w-full flex-col items-center bg-white transition-shadow duration-300':
-          true,
-        'shadow-header': scrollPosition > 0
-      })}
-    >
-      <div className="grid-system">
-        <div className="grid-column-[12] inline-flex h-16 items-center justify-between px-4">
+    <>
+      <header className="shadow-header fixed z-10 flex w-full flex-col items-center bg-white px-4 transition-shadow duration-300">
+        <div className="grid-container desktop:h-16 inline-flex h-14 items-center justify-between">
           <div className="inline-flex items-center gap-10">
             <Link href="/">
               <Logo />
@@ -37,12 +25,12 @@ export const HomeHeader = (): JSX.Element => {
 
           <div className="inline-flex items-center gap-20">
             <div className="desktop:block hidden max-w-[360px]">
-              <QuotationMarquee />
+              <CoinMarquee />
             </div>
 
             <div className="tablet:inline-flex hidden items-center gap-6">
-              <button className="btn-link">Sign in</button>
-              <button className="btn-primary">Sign up</button>
+              <button className="link">Sign in</button>
+              <button className="btn btn-small btn-primary">Sign up</button>
             </div>
 
             <div className="tablet:hidden">
@@ -50,16 +38,17 @@ export const HomeHeader = (): JSX.Element => {
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="bg-secondary-200 desktop:hidden h-[1px] w-full" />
+        <div className="bg-secondary-200 desktop:hidden h-[1px] w-full" />
 
-      <div
-        aria-hidden
-        className="desktop:hidden tablet:max-w-[360px] mx-auto max-w-full"
-      >
-        <QuotationMarquee />
-      </div>
-    </header>
+        <div
+          aria-hidden
+          className="desktop:hidden tablet:max-w-[360px] mx-auto max-w-full"
+        >
+          <CoinMarquee />
+        </div>
+      </header>
+      <div className="desktop:h-16 h-[85px]" />
+    </>
   );
 };

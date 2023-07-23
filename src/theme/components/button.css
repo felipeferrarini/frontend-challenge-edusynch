@@ -2,14 +2,22 @@
 
 @layer components {
   .btn {
-    @apply h-8 px-4 py-0 transition-all duration-100 ease-in-out active:scale-95;
+    @apply inline-flex items-center justify-center rounded-full transition-all duration-200 ease-in-out active:scale-95;
+  }
+
+  .btn-small {
+    @apply h-8 gap-[8px] px-4 py-2 text-sm leading-4;
+  }
+
+  .btn-medium {
+    @apply h-10 gap-[8px] px-4 py-12 text-sm leading-4;
+  }
+
+  .btn-large {
+    @apply h-12 gap-[10px] px-6 py-[14px] text-base;
   }
 
   .btn-primary {
-    @apply btn bg-primary-500 hover:bg-primary-600 rounded-2xl text-white;
-  }
-
-  .btn-link {
-    @apply btn text-text-base hover:text-primary-500 p-0;
+    @apply bg-primary-500 hover:bg-primary-600 text-white;
   }
 }

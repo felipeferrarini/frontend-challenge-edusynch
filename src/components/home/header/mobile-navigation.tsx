@@ -1,3 +1,5 @@
+'use client';
+
 import { MenuIcon } from '@/components/ui/icons';
 import { homeLinks } from '@/config/constants';
 import { useDisclosure } from '@/hooks/use-disclosure';
@@ -8,7 +10,7 @@ export const MobileNavigation = (): JSX.Element => {
 
   return (
     <Dialog.Root open={isOpen} onOpenChange={onChange}>
-      <Dialog.Trigger>
+      <Dialog.Trigger aria-controls="">
         <MenuIcon />
       </Dialog.Trigger>
       <Dialog.Portal>

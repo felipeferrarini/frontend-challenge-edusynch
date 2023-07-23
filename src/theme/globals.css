@@ -17,7 +17,7 @@
   input,
   textarea,
   button {
-    @apply text-text-base text-base font-normal;
+    @apply text-text-base text-sm font-normal;
   }
 
   a {
