@@ -1,3 +1,4 @@
+import { HeaderSpacer } from '../header';
 import { aboutInfos } from './constants';
 import { InfoCard } from './info-card';
 import { InfoCardsCarousel } from './info-cards-carousel';
@@ -6,8 +7,9 @@ export const About = (): JSX.Element => {
   return (
     <section
       id="about-us"
-      className="flex min-h-screen w-full items-center justify-center bg-gradient-to-b from-white to-[#F7F7F7] px-3"
+      className="flex min-h-screen w-full flex-col items-center justify-center bg-gradient-to-b from-white to-[#F7F7F7] px-3"
     >
+      <HeaderSpacer />
       <div className="grid-container tablet:grid-system tablet:grid flex h-full flex-col items-center">
         <div className="desktop:order-1 desktop:col-start-1 desktop:col-end-7 tablet:block order-2 col-start-1 col-end-8 hidden">
           <div className="flex flex-wrap gap-8">

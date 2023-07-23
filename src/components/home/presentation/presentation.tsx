@@ -1,4 +1,5 @@
 import { ArrowRightIcon } from '@radix-ui/react-icons';
+import { HeaderSpacer } from '../header';
 import { PresentationCarousel } from './presentation-carousel';
 
 const chips = ['Cryptos', 'NFTs', 'Games'];
@@ -6,6 +7,7 @@ const chips = ['Cryptos', 'NFTs', 'Games'];
 export const Presentation = (): JSX.Element => {
   return (
     <section className="flex min-h-[100vh] flex-col items-center">
+      <HeaderSpacer />
       <div className="flex flex-1 px-3">
         <div className="grid-container desktop:gap-24 inline-flex flex-1 items-center gap-10">
           <div className="tablet:items-start tablet:text-start flex flex-1 flex-col items-center text-center">
