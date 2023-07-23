@@ -1,5 +1,6 @@
 import {
   About,
+  HomeFooter,
   HomeHeader,
   NewsLetter,
   Presentation,
@@ -14,6 +15,7 @@ export default function Home() {
       <About />
       <TopCryptos />
       <NewsLetter />
+      <HomeFooter />
     </main>
   );
 }
