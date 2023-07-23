@@ -22,6 +22,9 @@
   .paragraph {
     @apply text-sm;
   }
+  .label {
+    @apply text-sm leading-[16px];
+  }
   .label-small {
     @apply text-xs leading-[14px];
   }
