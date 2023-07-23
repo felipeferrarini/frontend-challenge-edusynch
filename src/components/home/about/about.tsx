@@ -11,7 +11,7 @@ export const About = (): JSX.Element => {
     >
       <HeaderSpacer />
       <div className="grid-container tablet:grid-system tablet:grid flex h-full flex-col items-center">
-        <div className="desktop:order-1 desktop:col-start-1 desktop:col-end-7 tablet:block order-2 col-start-1 col-end-8 hidden">
+        <div className="desktop:order-1 desktop:col-start-1 desktop:col-end-8 tablet:block order-2 col-start-1 col-end-9 hidden">
           <div className="flex flex-wrap gap-8">
             {aboutInfos.map((info, index) => (
               <InfoCard
@@ -23,7 +23,7 @@ export const About = (): JSX.Element => {
           </div>
         </div>
 
-        <div className="desktop:order-2 desktop:col-start-8 desktop:col-end-12 order-1 col-start-2 col-end-7">
+        <div className="desktop:order-2 desktop:col-start-8 desktop:col-end-13 order-1 col-start-2 col-end-8">
           <div className="flex flex-col items-start">
             <p className="body desktop:heading-5 text-primary-500 mb-1 font-bold">
               Lorem ipsum

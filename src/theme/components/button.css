@@ -10,18 +10,24 @@
   }
 
   .btn-medium {
-    @apply h-10 gap-[8px] px-4 py-12 text-sm leading-4;
+    @apply h-10 gap-[8px] px-4 py-[12px] text-sm leading-4;
   }
 
   .btn-large {
     @apply h-12 gap-[10px] px-6 py-[14px] text-base;
   }
 
+  .btn-disabled {
+    @apply disabled:cursor-not-allowed disabled:bg-gray-300 disabled:shadow-none disabled:hover:bg-gray-300 disabled:active:scale-100;
+  }
+
   .btn-primary {
     @apply bg-primary-500 hover:bg-primary-600 text-white;
+    @apply btn-disabled;
   }
 
   .btn-success {
     @apply bg-success-700 hover:bg-success-800 text-white;
+    @apply btn-disabled;
   }
 }

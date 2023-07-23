@@ -1,4 +1,10 @@
-import { About, HomeHeader, Presentation, TopCryptos } from '@/components/home';
+import {
+  About,
+  HomeHeader,
+  NewsLetter,
+  Presentation,
+  TopCryptos
+} from '@/components/home';
 
 export default function Home() {
   return (
@@ -7,6 +13,7 @@ export default function Home() {
       <Presentation />
       <About />
       <TopCryptos />
+      <NewsLetter />
     </main>
   );
 }

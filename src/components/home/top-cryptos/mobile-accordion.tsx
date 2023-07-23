@@ -16,15 +16,16 @@ export const MobileAccordion = ({ data }: Props): JSX.Element => {
         <p>Crypto</p>
         <p>Actions</p>
       </div>
+
       <Accordion.Root type="single" defaultValue="item-1" collapsible>
         {data.map(coin => (
           <Accordion.Item
             key={`accordion-item-${coin.id}`}
             value={coin.id}
-            className="overflow-hidden focus-within:relative focus-within:z-10"
+            className="group overflow-hidden focus-within:relative focus-within:z-10"
           >
             <Accordion.Header className="flex">
-              <Accordion.Trigger className="group flex flex-1 items-center justify-between bg-white p-4">
+              <Accordion.Trigger className="group-even:bg-secondary-100 flex flex-1 items-center justify-between p-4">
                 <div className="label-small inline-flex items-center gap-4">
                   <Image
                     src={coin.image}
@@ -46,6 +47,7 @@ export const MobileAccordion = ({ data }: Props): JSX.Element => {
                 />
               </Accordion.Trigger>
             </Accordion.Header>
+
             <Accordion.Content className="data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp overflow-hidden">
               <div className="bg-secondary-200 desktop:hidden h-[1px] w-full" />
               <div className="label-small text-secondary-500 flex w-full flex-col gap-4 p-4">

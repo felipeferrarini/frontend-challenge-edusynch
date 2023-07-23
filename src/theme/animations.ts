@@ -13,12 +13,12 @@ const animations = {
       to: { opacity: '1', transform: 'translateX(0)' }
     },
     slideDown: {
-      from: { height: 0 },
+      from: { height: '0' },
       to: { height: 'var(--radix-accordion-content-height)' }
     },
     slideUp: {
       from: { height: 'var(--radix-accordion-content-height)' },
-      to: { height: 0 }
+      to: { height: '0' }
     }
   },
   animation: {

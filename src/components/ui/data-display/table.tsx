@@ -32,7 +32,7 @@ export const Table = ({ columns, rows }: Props): JSX.Element => {
       </thead>
       <tbody className="body">
         {rows.map((row, index) => (
-          <tr key={`table-row-${index}`} className="odd:bg-secondary-100 h-16">
+          <tr key={`table-row-${index}`} className="even:bg-secondary-100 h-16">
             {row.cells.map(({ key, value }) => (
               <td key={`table-row-cell-${key}`} className="last:pr-6">
                 {value}
