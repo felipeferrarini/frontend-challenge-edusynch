@@ -1,5 +1,5 @@
 export const environment = {
-  COINGECKO_BASE_URL: process.env.NEXT_PUBLIC_COINGECKO_BASE_URL
+  COINCAP_BASE_URL: process.env.NEXT_PUBLIC_COINCAP_BASE_URL
 };
 
 export const getEnv = (key: keyof typeof environment) => {

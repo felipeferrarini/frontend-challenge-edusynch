@@ -1,10 +1,12 @@
 export interface ExternalCoinInfo {
   id: string;
+  rank: string;
   symbol: string;
   name: string;
-  image: string;
-  current_price: number;
-  price_change_percentage_24h: number;
+  priceUsd: string;
+  changePercent24Hr: string;
 }
 
-export type GetTrendingCoinsResponse = ExternalCoinInfo[];
+export type GetTrendingCoinsResponse = {
+  data: ExternalCoinInfo[];
+};
