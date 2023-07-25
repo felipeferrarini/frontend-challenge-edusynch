@@ -19,7 +19,9 @@ export const NewsLetterForm = (): JSX.Element => {
     >
       <Form.Field className="mb-5" name="email">
         <div className="mb-2 flex items-baseline justify-between">
-          <Form.Label className="label text-white">Email</Form.Label>
+          <Form.Label htmlFor="email" className="label text-white">
+            Email
+          </Form.Label>
           <Form.Message className="label text-white" match="valueMissing">
             Please enter your email
           </Form.Message>
@@ -29,6 +31,7 @@ export const NewsLetterForm = (): JSX.Element => {
         </div>
         <Form.Control asChild>
           <input
+            id="email"
             className="input tablet:input-large input-medium w-full"
             type="email"
             placeholder="Email"

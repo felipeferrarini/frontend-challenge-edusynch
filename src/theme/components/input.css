@@ -4,6 +4,7 @@
   .input {
     @apply rounded-md bg-white px-4 focus:outline-none;
     @apply disabled:text-secondary-500 disabled:cursor-not-allowed disabled:select-none;
+    @apply border-secondary-300 border-[1px];
   }
 
   .input-medium {

@@ -5,6 +5,7 @@ import { homeLinks } from '@/config/constants';
 import { useDisclosure } from '@/hooks/use-disclosure';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useRouter } from 'next/navigation';
+import { SignInButton, SignUpButton } from '../authentication';
 
 export const MobileNavigation = (): JSX.Element => {
   const { isOpen, onChange, onClose } = useDisclosure();
@@ -32,8 +33,8 @@ export const MobileNavigation = (): JSX.Element => {
               </button>
             ))}
 
-            <button className="link">Sign in</button>
-            <button className="btn btn-small btn-primary">Sign up</button>
+            <SignInButton />
+            <SignUpButton />
           </div>
         </Dialog.Content>
       </Dialog.Portal>

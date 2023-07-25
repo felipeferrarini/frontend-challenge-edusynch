@@ -1,3 +1,4 @@
+import { SignUpButton } from '../authentication';
 import { HeaderSpacer } from '../header';
 import { aboutInfos } from './constants';
 import { InfoCard } from './info-card';
@@ -38,9 +39,9 @@ export const About = (): JSX.Element => {
               aliquam, purus sit amet luctus venenatis, lectus magna fringilla
               urna, porttitor
             </p>
-            <button className="btn btn-primary btn-large desktop:flex hidden">
+            <SignUpButton className="btn btn-primary btn-large desktop:flex hidden">
               Sign up now
-            </button>
+            </SignUpButton>
           </div>
         </div>
 

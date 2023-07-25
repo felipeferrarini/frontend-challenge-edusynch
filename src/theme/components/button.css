@@ -22,12 +22,17 @@
   }
 
   .btn-primary {
-    @apply bg-primary-500 hover:bg-primary-600 text-white;
+    @apply !bg-primary-500 hover:!bg-primary-600 text-white;
     @apply btn-disabled;
   }
 
   .btn-success {
     @apply bg-success-700 hover:bg-success-800 text-white;
+    @apply btn-disabled;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-gray-700 hover:bg-gray-100;
     @apply btn-disabled;
   }
 }

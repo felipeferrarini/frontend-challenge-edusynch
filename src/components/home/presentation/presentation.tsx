@@ -1,4 +1,5 @@
 import { ArrowRightIcon } from '@radix-ui/react-icons';
+import { SignUpButton } from '../authentication';
 import { HeaderSpacer } from '../header';
 import { PresentationCarousel } from './presentation-carousel';
 
@@ -21,9 +22,9 @@ export const Presentation = (): JSX.Element => {
               urna, porttitor
             </p>
 
-            <button className="btn btn-primary btn-small tablet:btn-large desktop:mb-20 mb-10 w-full max-w-[278px]">
+            <SignUpButton className="btn btn-primary btn-small tablet:btn-large desktop:mb-20 mb-10 w-full max-w-[278px]">
               SIGN UP NOW <ArrowRightIcon />
-            </button>
+            </SignUpButton>
 
             <div className="desktop:gap-8 inline-flex gap-6">
               {chips.map(chip => (

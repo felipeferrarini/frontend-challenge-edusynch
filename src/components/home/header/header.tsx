@@ -1,6 +1,9 @@
+'use client';
+
 import { Logo } from '@/components/ui/common';
 import { homeLinks } from '@/config/constants';
 import Link from 'next/link';
+import { SignInButton, SignUpButton } from '../authentication';
 import { CoinMarquee } from './coin-marquee';
 import { MobileNavigation } from './mobile-navigation';
 
@@ -28,8 +31,8 @@ export const HomeHeader = (): JSX.Element => {
           </div>
 
           <div className="tablet:inline-flex hidden items-center gap-6">
-            <button className="link">Sign in</button>
-            <button className="btn btn-small btn-primary">Sign up</button>
+            <SignInButton />
+            <SignUpButton />
           </div>
 
           <div className="tablet:hidden">
