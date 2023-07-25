@@ -2,7 +2,13 @@
 
 @layer components {
   .btn {
+    --btn-color: theme('colors.secondary-300');
+    --btn-hover-color: theme('colors.secondary-400');
+    --btn-text-color: theme('colors.text-base');
+    --btn-ghost-color: theme('colors.secondary-100');
+    --btn-ghost-text-color: theme('colors.text-base');
     @apply inline-flex items-center justify-center rounded-full transition-all duration-200 ease-in-out active:scale-95;
+    @apply !bg-[var(--btn-color)] text-[var(--btn-text-color)] hover:!bg-[var(--btn-hover-color)];
   }
 
   .btn-small {
@@ -17,22 +23,27 @@
     @apply h-12 gap-[10px] px-6 py-[14px] text-base;
   }
 
-  .btn-disabled {
-    @apply disabled:cursor-not-allowed disabled:bg-gray-300 disabled:shadow-none disabled:hover:bg-gray-300 disabled:active:scale-100;
+  .btn:disabled {
+    @apply cursor-not-allowed !bg-gray-300 shadow-none hover:!bg-gray-300 active:scale-100;
   }
 
   .btn-primary {
-    @apply !bg-primary-500 hover:!bg-primary-600 text-white;
-    @apply btn-disabled;
+    --btn-color: theme(colors.primary-500);
+    --btn-hover-color: theme(colors.primary-600);
+    --btn-text-color: theme(colors.white);
+    --btn-ghost-color: theme(colors.primary-100);
+    --btn-ghost-text-color: theme(colors.text-base);
   }
 
   .btn-success {
-    @apply bg-success-700 hover:bg-success-800 text-white;
-    @apply btn-disabled;
+    --btn-color: theme(colors.success-700);
+    --btn-hover-color: theme(colors.success-800);
+    --btn-text-color: theme(colors.white);
+    --btn-ghost-color: theme(colors.success-100);
+    --btn-ghost-text-color: theme(colors.text-base);
   }
 
   .btn-ghost {
-    @apply bg-transparent text-gray-700 hover:bg-gray-100;
-    @apply btn-disabled;
+    @apply !bg-transparent !text-[var(--btn-ghost-text-color)] hover:!bg-[var(--btn-ghost-color)];
   }
 }

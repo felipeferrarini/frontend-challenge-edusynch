@@ -12,7 +12,9 @@ export const DashboardLayout = ({
 
       <div className="flex flex-1 flex-row items-stretch bg-[#F9F9F9]">
         <Sidebar />
-        {children}
+        <div className="desktop:px-20 desktop:py-14 tablet:px-12 tablet:py-10 flex flex-1 p-6">
+          {children}
+        </div>
       </div>
       <DashboardFooter />
     </div>

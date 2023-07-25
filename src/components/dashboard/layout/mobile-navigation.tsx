@@ -20,7 +20,7 @@ export const MobileNavigation = (): JSX.Element => {
             {sidebarItems.map(({ icon, label }) => (
               <button
                 key={`mobile-navigation-item-${label}`}
-                className="label hover:bg-primary-100 inline-flex w-full items-center gap-4 rounded-md px-2 py-2 transition-colors"
+                className="btn btn-primary btn-ghost btn-small h-auto w-full justify-start gap-4 rounded-md"
                 onClick={onClose}
               >
                 {icon}
