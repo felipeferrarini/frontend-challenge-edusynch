@@ -1,0 +1,57 @@
+@tailwind components;
+
+@layer components {
+  .tooltip {
+    @apply relative inline-block text-center;
+    --tooltip-offset: calc(100% + 0.5rem + var(--tooltip-tail, 0px));
+    --tooltip-tail: 0.5rem;
+    --tooltip-color: theme('colors.secondary-300');
+    --tooltip-text-color: theme('colors.text-base');
+    --tooltip-tail-offset: calc(100% + 0.5rem - var(--tooltip-tail));
+  }
+
+  .tooltip:before,
+  .tooltip:after {
+    @apply opacity-0 transition delay-100 duration-200 ease-in-out hover:opacity-100 hover:delay-75;
+  }
+
+  .tooltip:before {
+    @apply absolute z-[1] w-max max-w-xs rounded bg-[var(--tooltip-color)] px-6 py-2 text-sm leading-4 text-[var(--tooltip-text-color)];
+    @apply bottom-[var(--tooltip-offset)] left-1/2 right-auto top-auto -translate-x-1/2;
+    pointer-events: none;
+    content: attr(data-tip);
+  }
+
+  .tooltip-bottom:before {
+    @apply bottom-auto left-1/2 right-auto top-[var(--tooltip-offset)];
+    transform: translateX(-50%);
+  }
+
+  .tooltip-right:before {
+    @apply bottom-auto left-[var(--tooltip-offset)] right-auto top-1/2;
+    transform: translateY(-50%);
+  }
+
+  .tooltip:after {
+    @apply absolute block h-0 w-0 border-solid;
+    @apply bottom-[var(--tooltip-tail-offset)] left-1/2 right-auto top-auto border-transparent border-t-[var(--tooltip-color)];
+    content: '';
+    border-width: var(--tooltip-tail, 0);
+    transform: translateX(-50%);
+  }
+
+  .tooltip-bottom:after {
+    @apply bottom-auto left-1/2 right-auto top-[var(--tooltip-tail-offset)] border-transparent border-b-[var(--tooltip-color)];
+    transform: translateX(-50%);
+  }
+
+  .tooltip-right:after {
+    @apply bottom-auto left-[calc(var(--tooltip-tail-offset)+0.0625rem)] right-auto top-1/2 border-transparent border-r-[var(--tooltip-color)];
+    transform: translateY(-50%);
+  }
+
+  .tooltip-primary {
+    --tooltip-color: theme(colors.primary-500);
+    --tooltip-text-color: theme(colors.white);
+  }
+}
