@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react';
+import { DashboardFooter } from './footer';
 import { DashboardHeader } from './header';
 import { Sidebar } from './sidebar';
 
@@ -13,6 +14,7 @@ export const DashboardLayout = ({
         <Sidebar />
         {children}
       </div>
+      <DashboardFooter />
     </div>
   );
 };

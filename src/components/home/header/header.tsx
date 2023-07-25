@@ -10,7 +10,7 @@ import { MobileNavigation } from './mobile-navigation';
 export const HomeHeader = (): JSX.Element => {
   return (
     <header className="shadow-header fixed z-10 flex w-full flex-col items-center bg-white px-4 transition-shadow duration-300">
-      <div className="grid-container desktop:h-16 inline-flex h-14 items-center justify-between">
+      <div className="grid-container desktop:h-16 tablet:h-[60px] inline-flex h-14 items-center justify-between">
         <div className="inline-flex items-center gap-10">
           <Link href="/">
             <Logo />

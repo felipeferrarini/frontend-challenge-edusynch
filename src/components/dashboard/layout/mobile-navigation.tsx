@@ -3,11 +3,10 @@
 import { MenuIcon } from '@/components/ui/icons';
 import { useDisclosure } from '@/hooks/use-disclosure';
 import * as Dialog from '@radix-ui/react-dialog';
-import { useRouter } from 'next/navigation';
+import { sidebarItems } from './constants';
 
 export const MobileNavigation = (): JSX.Element => {
   const { isOpen, onChange, onClose } = useDisclosure();
-  const router = useRouter();
 
   return (
     <Dialog.Root open={isOpen} onOpenChange={onChange}>
@@ -16,8 +15,19 @@ export const MobileNavigation = (): JSX.Element => {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="drawer-overlay" />
-        <Dialog.Content className="drawer-content drawer-left">
-          <div className="mt-10 flex flex-col items-center gap-8"></div>
+        <Dialog.Content className="drawer-content drawer-left tablet:max-w-[240px] max-w-[224px]">
+          <div className="mt-10 flex flex-col items-start gap-8 px-4">
+            {sidebarItems.map(({ icon, label }) => (
+              <button
+                key={`mobile-navigation-item-${label}`}
+                className="label hover:bg-primary-100 inline-flex w-full items-center gap-4 rounded-md px-2 py-2 transition-colors"
+                onClick={onClose}
+              >
+                {icon}
+                <span>{label}</span>
+              </button>
+            ))}
+          </div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
