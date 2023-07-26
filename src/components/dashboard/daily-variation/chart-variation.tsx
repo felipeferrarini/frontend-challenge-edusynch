@@ -22,9 +22,7 @@ export const ChartVariation = ({ data }: Props): JSX.Element => {
       },
       sparkline: {
         enabled: true
-      },
-      height: 112,
-      width: 187
+      }
     },
     grid: {
       borderColor: 'rgba(163, 163, 163, 0.1)',
@@ -79,6 +77,7 @@ export const ChartVariation = ({ data }: Props): JSX.Element => {
         }
       ]}
       type="area"
+      height="100%"
     />
   );
 };
