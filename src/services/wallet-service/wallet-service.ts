@@ -12,3 +12,16 @@ export const getWalletBalance = async (): Promise<number> => {
 export const useGetWalletBalance = () => {
   return useQuery(['walletBalance'], getWalletBalance);
 };
+
+export type AddCryptoParams = {
+  cryptoId: string;
+  quantity: number;
+};
+
+export const addCryptoToWallet = async (
+  params: AddCryptoParams
+): Promise<boolean> => {
+  const { data } = await httpClient.post('/api/wallet', params);
+
+  return data.success;
+};

@@ -1,4 +1,5 @@
 import { DailyVariation } from '@/components/dashboard/daily-variation';
+import { MyWallet } from '@/components/dashboard/my-wallet';
 import { NftCard } from '@/components/dashboard/nft-card';
 import { WalletBalance } from '@/components/dashboard/wallet-balance';
 
@@ -13,6 +14,10 @@ export default function Dashboard() {
       </section>
       <section className="tablet:col-start-5 tablet:col-end-9 desktop:col-start-10 desktop:col-end-13 col-start-3 col-end-5">
         <NftCard />
+      </section>
+
+      <section className="tablet:col-span-8 desktop:col-span-12 col-span-4">
+        <MyWallet />
       </section>
     </main>
   );
