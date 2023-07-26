@@ -17,9 +17,9 @@ export const TextInput = forwardRef<HTMLInputElement, InputFieldProps>(
           {...rest}
           className={cx(
             inputClassName,
-            'input tablet:input-large input-medium w-full',
-            { 'pl-12': icon }
+            'input tablet:input-large input-medium w-full data-[icon]:pl-12'
           )}
+          data-icon={!!icon}
           ref={ref}
         />
         <div className="text-secondary-300 absolute bottom-0 left-0 top-0 flex items-center pl-4">
