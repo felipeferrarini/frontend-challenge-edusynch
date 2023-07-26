@@ -1,7 +1,9 @@
-export const subscribeNewsletter = async (_email: string) => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve({ success: true });
-    }, 5000);
-  });
+import { createHttpClient, getBaseUrl } from '@/lib/http-client';
+
+const httpClient = createHttpClient(getBaseUrl());
+
+export const subscribeNewsletter = async (email: string) => {
+  const { data } = await httpClient.post('/api/newsletter', { email });
+
+  return data.success;
 };

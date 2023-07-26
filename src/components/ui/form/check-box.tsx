@@ -1,11 +1,13 @@
 import * as RxCheckbox from '@radix-ui/react-checkbox';
+import { CheckboxProps } from '@radix-ui/react-checkbox';
 import { CheckIcon } from '@radix-ui/react-icons';
 import { ComponentProps, ReactNode, forwardRef } from 'react';
 
-type Props = ComponentProps<'button'> & {
-  label: ReactNode;
-  id: string;
-};
+type Props = ComponentProps<'button'> &
+  CheckboxProps & {
+    label: ReactNode;
+    id: string;
+  };
 
 export const Checkbox = forwardRef<HTMLButtonElement, Props>((props, ref) => {
   const { id, label } = props;

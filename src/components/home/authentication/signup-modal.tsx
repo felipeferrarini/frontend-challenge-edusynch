@@ -18,9 +18,9 @@ import { useSignInModal, useSignUpModal } from './store';
 import { signUpSchema } from './validation-schema';
 
 const ModalTitle = (): JSX.Element => (
-  <h4 className="body tablet:heading-5 desktop:heading-4">
+  <span className="body tablet:heading-5 desktop:heading-4">
     Sign up to <TextLogo />
-  </h4>
+  </span>
 );
 
 export const SignUpModal = (): JSX.Element => {
@@ -28,13 +28,16 @@ export const SignUpModal = (): JSX.Element => {
   const { onOpen: onOpenSignIn } = useSignInModal();
   const router = useRouter();
 
-  const { handleSubmit, register, formState } = useForm<SignUpParams>({
-    resolver: yupResolver(signUpSchema)
-  });
+  const { handleSubmit, register, formState, setValue } = useForm<SignUpParams>(
+    { resolver: yupResolver(signUpSchema) }
+  );
   const { errors } = formState;
 
   const { isLoading, mutate } = useMutation(signUp, {
-    onSuccess: () => router.push('/dashboard')
+    onSuccess: () => {
+      router.push('/dashboard');
+      onChange(false);
+    }
   });
 
   const handleOpenSignIn = () => {
@@ -112,15 +115,29 @@ export const SignUpModal = (): JSX.Element => {
           )}
         </Form.Field>
 
-        <Checkbox
-          id="terms"
-          label={
-            <span className="tablet:label label-small">
-              I have read and accept the <strong>Privacy Policy</strong> and{' '}
-              <strong>Terms of User Sign up</strong>.
-            </span>
-          }
-        />
+        <Form.Field name="terms">
+          <Form.Control asChild>
+            <Checkbox
+              id="terms"
+              label={
+                <span className="tablet:label label-small">
+                  I have read and accept the <strong>Privacy Policy</strong> and{' '}
+                  <strong>Terms of User Sign up</strong>.
+                </span>
+              }
+              onCheckedChange={value => {
+                if (typeof value === 'boolean') {
+                  setValue('terms', value);
+                }
+              }}
+            />
+          </Form.Control>
+          {errors.terms && (
+            <Form.Message className="tablet:label label-small">
+              {errors.terms.message}
+            </Form.Message>
+          )}
+        </Form.Field>
 
         <Form.Submit asChild>
           <button

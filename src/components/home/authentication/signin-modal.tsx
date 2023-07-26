@@ -14,9 +14,9 @@ import { useSignInModal, useSignUpModal } from './store';
 import { signInSchema } from './validation-schema';
 
 const ModalTitle = (): JSX.Element => (
-  <h4 className="body tablet:heading-5 desktop:heading-4">
+  <span className="body tablet:heading-5 desktop:heading-4">
     Sign in to <TextLogo />
-  </h4>
+  </span>
 );
 
 export const SignInModal = (): JSX.Element => {
@@ -30,7 +30,10 @@ export const SignInModal = (): JSX.Element => {
   const { errors } = formState;
 
   const { isLoading, mutate } = useMutation(signIn, {
-    onSuccess: () => router.push('/dashboard')
+    onSuccess: () => {
+      router.push('/dashboard');
+      onChange(false);
+    }
   });
 
   const handleOpenSignUp = () => {

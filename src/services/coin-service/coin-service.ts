@@ -2,20 +2,22 @@ import { getEnv } from '@/config/environment';
 import { ICoinInfo } from '@/interfaces/coin-info';
 import { createHttpClient } from '@/lib/http-client';
 import { useQuery } from '@tanstack/react-query';
-import { GetTrendingCoinsResponse } from './types';
+import { GetCoinsResponse } from './types';
 
 const httpClient = createHttpClient(getEnv('COINCAP_BASE_URL'));
 
-export const getTrendingCoins = async (
+export const getCoins = async (
   offset = 0,
-  limit = 10
+  limit = 10,
+  ids?: string[]
 ): Promise<ICoinInfo[]> => {
   const query = new URLSearchParams({
     offset: offset.toString(),
-    limit: limit.toString()
+    limit: limit.toString(),
+    ...(ids && { ids: ids.join(',') })
   });
 
-  const { data } = await httpClient.get<GetTrendingCoinsResponse>(
+  const { data } = await httpClient.get<GetCoinsResponse>(
     `/v2/assets?${query}`
   );
 
@@ -33,5 +35,9 @@ export const getTrendingCoins = async (
 };
 
 export const useGetTrendingCoins = () => {
-  return useQuery(['trendingCoins'], () => getTrendingCoins());
+  return useQuery(['trendingCoins'], () => getCoins());
+};
+
+export const useGetCoins = (limit: number, ids: string[] = []) => {
+  return useQuery(['coins', limit, ids], () => getCoins(0, limit, ids));
 };

@@ -1,14 +1,17 @@
+import { createHttpClient, getBaseUrl } from '@/lib/http-client';
+import { User } from '@prisma/client';
+
+const httpClient = createHttpClient(getBaseUrl());
+
 export type SignInParams = {
   email: string;
   password: string;
 };
 
-export const signIn = async (_params: SignInParams) => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve({ success: true });
-    }, 5000);
-  });
+export const signIn = async (params: SignInParams): Promise<User> => {
+  const { data } = await httpClient.post('/api/auth/signin', params);
+
+  return data.user;
 };
 
 export type SignUpParams = {
@@ -19,10 +22,8 @@ export type SignUpParams = {
   terms: boolean;
 };
 
-export const signUp = async (_params: SignUpParams) => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve({ success: true });
-    }, 5000);
-  });
+export const signUp = async (params: SignUpParams) => {
+  const { data } = await httpClient.post('/api/auth/signup', params);
+
+  return data.user;
 };

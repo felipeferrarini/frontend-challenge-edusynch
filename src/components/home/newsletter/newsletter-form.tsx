@@ -4,12 +4,16 @@ import { subscribeNewsletter } from '@/services/newsletter-service';
 import * as Form from '@radix-ui/react-form';
 import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 export const NewsLetterForm = (): JSX.Element => {
   const { handleSubmit, reset, register } = useForm<{ email: string }>();
 
   const { isLoading, mutate } = useMutation(subscribeNewsletter, {
-    onSuccess: () => reset()
+    onSuccess: () => {
+      toast.success('You have successfully subscribed to our newsletter');
+      reset();
+    }
   });
 
   return (

@@ -1,1 +1,1 @@
-export * from './get-treding-coins-response';
+export * from './get-coins-response';

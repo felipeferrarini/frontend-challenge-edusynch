@@ -7,6 +7,6 @@ export interface ExternalCoinInfo {
   changePercent24Hr: string;
 }
 
-export type GetTrendingCoinsResponse = {
+export type GetCoinsResponse = {
   data: ExternalCoinInfo[];
 };
