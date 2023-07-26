@@ -44,6 +44,9 @@ export const AddCryptoModal = (): JSX.Element => {
       queryClient.refetchQueries({
         queryKey: ['walletBalance']
       });
+      queryClient.refetchQueries({
+        queryKey: ['getWallet']
+      });
       reset();
       onClose();
     }

@@ -2,6 +2,7 @@ export * from './bitcoin-icon';
 export * from './chart-icon';
 export * from './chevron-right-icon';
 export * from './chevron-up-icon';
+export * from './conversion-icon';
 export * from './crypto-wallet-icon';
 export * from './empty-wallet-icon';
 export * from './ethereum-icon';

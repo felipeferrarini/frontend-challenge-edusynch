@@ -44,3 +44,27 @@ export async function POST(request: NextRequest) {
 
   return NextResponse.json({ success: true });
 }
+
+export async function GET() {
+  const user = getUserFromCookie();
+
+  if (!user?.id) {
+    return responseError(
+      'You must be logged in to get your crypt wallet info',
+      401
+    );
+  }
+
+  const cryptoWallet = await prismaClient.cryptoWallet.findMany({
+    where: {
+      ownerId: user.id
+    }
+  });
+
+  return NextResponse.json(
+    cryptoWallet.map(({ cryptoId, quantity }) => ({
+      cryptoId,
+      quantity
+    }))
+  );
+}

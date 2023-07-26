@@ -1,5 +1,7 @@
+import { IWalletInfo } from '@/interfaces/wallet-info';
 import { createHttpClient, getBaseUrl } from '@/lib/http-client';
 import { useQuery } from '@tanstack/react-query';
+import { getCoins } from '../coin-service';
 
 const httpClient = createHttpClient(getBaseUrl());
 
@@ -24,4 +26,37 @@ export const addCryptoToWallet = async (
   const { data } = await httpClient.post('/api/wallet', params);
 
   return data.success;
+};
+
+export const getWallet = async (): Promise<IWalletInfo[]> => {
+  const { data } = await httpClient.get<
+    Array<{
+      cryptoId: string;
+      quantity: number;
+    }>
+  >('/api/wallet');
+
+  const cryptoIds = data.map(crypto => crypto.cryptoId);
+
+  const criptoInfo = await getCoins(0, cryptoIds.length, cryptoIds);
+
+  const walletInfos = data.map(crypto => {
+    const coinInfo = criptoInfo.find(coin => coin.id === crypto.cryptoId);
+
+    if (!coinInfo) {
+      return null;
+    }
+
+    return {
+      ...coinInfo,
+      quantity: crypto.quantity,
+      totalPrice: crypto.quantity * (coinInfo?.currentPrice || 0)
+    };
+  });
+
+  return walletInfos.filter(Boolean) as IWalletInfo[];
+};
+
+export const useGetWallet = () => {
+  return useQuery(['getWallet'], getWallet);
 };
