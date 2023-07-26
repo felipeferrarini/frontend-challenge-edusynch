@@ -19,7 +19,8 @@ const config: Config = {
         sans: ['var(--font-sans)']
       },
       boxShadow: {
-        header: '0px 4px 8px 0px rgba(77, 77, 77, 0.10)'
+        header: '0px 4px 8px 0px rgba(77, 77, 77, 0.10)',
+        dashboard: '0px 8px 16px 0px rgba(0, 0, 0, 0.10)'
       }
     }
   },
