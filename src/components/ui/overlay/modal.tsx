@@ -21,7 +21,9 @@ export const Modal = ({
     <Dialog.Portal>
       <Dialog.Overlay className="bg-text-base data-[state=open]:animate-overlayShow fixed inset-0 z-40 opacity-90" />
       <Dialog.Content className="data-[state=open]:animate-contentShow tablet:p-6 desktop:p-8 tablet:max-w-[320px] desktop:max-w-[448px] fixed left-[50%] top-[50%] z-50 w-full max-w-[272px] translate-x-[-50%] translate-y-[-50%] rounded-lg bg-white p-4 shadow-[0px_12px_24px_0px_rgba(0,0,0,0.10)]">
-        <Dialog.Title className="mb-6 text-center">{title}</Dialog.Title>
+        <Dialog.Title className="tablet:mb-6 mb-4 text-center">
+          {title}
+        </Dialog.Title>
 
         {children}
 

@@ -1,4 +1,5 @@
 import { prismaClient } from '@/lib/prisma-client';
+import { getCoins } from '@/services/coin-service';
 import { getUserFromCookie, responseError } from '@/utils/api-utils';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -61,10 +62,23 @@ export async function GET() {
     }
   });
 
-  return NextResponse.json(
-    cryptoWallet.map(({ cryptoId, quantity }) => ({
-      cryptoId,
-      quantity
-    }))
-  );
+  const cryptoIds = cryptoWallet.map(crypto => crypto.cryptoId);
+
+  const criptoInfo = await getCoins(0, cryptoIds.length, cryptoIds);
+
+  const walletInfos = cryptoWallet.map(crypto => {
+    const coinInfo = criptoInfo.find(coin => coin.id === crypto.cryptoId);
+
+    if (!coinInfo) {
+      return null;
+    }
+
+    return {
+      ...coinInfo,
+      quantity: crypto.quantity,
+      totalPrice: crypto.quantity * (coinInfo?.currentPrice || 0)
+    };
+  });
+
+  return NextResponse.json(walletInfos.filter(Boolean));
 }

@@ -7,7 +7,7 @@ type Props = Omit<ComponentProps<'input'>, 'onChange'> & {
 };
 
 export const NumberInput = forwardRef<HTMLInputElement, Props>(
-  ({ name, onChange, ...rest }, ref): JSX.Element => {
+  ({ name, onChange, min, ...rest }, ref): JSX.Element => {
     const [value, setValue] = useState<number>();
 
     const handleIncrement = useCallback(() => {
@@ -20,11 +20,13 @@ export const NumberInput = forwardRef<HTMLInputElement, Props>(
 
     const handleDecrement = useCallback(() => {
       setValue(prev => {
-        const value = (prev || 0) - 1;
+        const prevValue = prev || 0;
+        if (min !== undefined && prevValue <= Number(min)) return prev;
+        const value = prevValue - 1;
         onChange?.(value);
         return value;
       });
-    }, [onChange]);
+    }, [min, onChange]);
 
     return (
       <div
@@ -41,6 +43,7 @@ export const NumberInput = forwardRef<HTMLInputElement, Props>(
           id={name}
           value={value}
           type="number"
+          min={min}
           onChange={e => {
             const value = Number(e.target.value);
             setValue(value);

@@ -18,13 +18,15 @@ export const DailyVariation = (): JSX.Element => {
 
         <div className="tablet:flex-col tablet:gap-2 flex flex-row items-center gap-4">
           <div className="inline-flex items-center gap-2">
-            <Image
-              src={info?.image || ''}
-              width={24}
-              height={24}
-              alt={coinId}
-              className="box-size-[16px] tablet:box-size-[24px]"
-            />
+            {info && (
+              <Image
+                src={info?.image || ''}
+                width={24}
+                height={24}
+                alt={coinId}
+                className="box-size-[16px] tablet:box-size-[24px]"
+              />
+            )}
             <p className="tablet:label label-small">{info?.symbol}</p>
           </div>
 

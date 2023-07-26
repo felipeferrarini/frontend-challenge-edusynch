@@ -4,6 +4,7 @@ import { CryptoWalletIcon } from '@/components/ui/icons';
 import { useGetWallet } from '@/services/wallet-service';
 import { AddCryptoModal } from './add-crypto-modal';
 import { EmptyState } from './empty-state';
+import { TransferModal } from './transfer-modal';
 import { WalletTable } from './wallet-table';
 
 export const MyWallet = (): JSX.Element => {
@@ -22,11 +23,13 @@ export const MyWallet = (): JSX.Element => {
 
       {!data.length && <EmptyState />}
 
-      {data.length && (
+      {!!data.length && (
         <div className="tablet:block hidden pt-6">
           <WalletTable data={data} />
         </div>
       )}
+
+      <TransferModal />
     </div>
   );
 };
