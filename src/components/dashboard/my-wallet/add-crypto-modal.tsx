@@ -61,9 +61,12 @@ export const AddCryptoModal = (): JSX.Element => {
         </span>
       }
       trigger={
-        <button className="btn btn-primary btn-small">
-          <PlusIcon />
-          Add crypto
+        <button
+          className="btn btn-primary tablet:btn-small btn-icon"
+          aria-label="Add crypto"
+        >
+          <PlusIcon className="box-size-[12px]" />
+          <span className="tablet:inline hidden">Add crypto</span>
         </button>
       }
       isOpen={isOpen}

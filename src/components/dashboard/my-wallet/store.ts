@@ -10,7 +10,14 @@ const transferDataAtom = atom<ICoinInfo | null>(null);
 export const useTransferModal = () => {
   const [isOpen, onChange] = useAtom(transferModalAtom);
   const [coinInfo, setTransferData] = useAtom(transferDataAtom);
-  const onOpen = useCallback(() => onChange(true), [onChange]);
 
-  return { isOpen, onChange, onOpen, coinInfo, setTransferData };
+  const onOpen = useCallback(
+    (data: ICoinInfo) => {
+      setTransferData(data);
+      onChange(true);
+    },
+    [onChange, setTransferData]
+  );
+
+  return { isOpen, onChange, onOpen, coinInfo };
 };

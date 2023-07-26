@@ -4,7 +4,6 @@ import { ConversionIcon } from '@/components/ui/icons';
 import { IWalletInfo } from '@/interfaces/wallet-info';
 import { formatCurrency } from '@/utils/number-utils';
 import Image from 'next/image';
-import { useCallback } from 'react';
 import { useTransferModal } from './store';
 
 type Props = {
@@ -20,15 +19,7 @@ export const columns: ITableColumn[] = [
 ];
 
 export const WalletTable = ({ data }: Props) => {
-  const { onOpen, setTransferData } = useTransferModal();
-
-  const handleTransfer = useCallback(
-    (coinInfo: IWalletInfo) => {
-      setTransferData(coinInfo);
-      onOpen();
-    },
-    [onOpen, setTransferData]
-  );
+  const { onOpen } = useTransferModal();
 
   return (
     <Table
@@ -96,7 +87,7 @@ export const WalletTable = ({ data }: Props) => {
                   <button
                     className="btn btn-ghost group p-1"
                     aria-label="Transfer Crypto"
-                    onClick={() => handleTransfer(coin)}
+                    onClick={() => onOpen(coin)}
                   >
                     <ConversionIcon className="group-hover:stroke-primary-500 transition-all" />
                   </button>

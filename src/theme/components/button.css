@@ -23,6 +23,10 @@
     @apply h-12 gap-[10px] px-6 py-[14px] text-base;
   }
 
+  .btn-icon {
+    @apply p-[6px];
+  }
+
   .btn:disabled {
     @apply cursor-not-allowed !bg-gray-300 shadow-none hover:!bg-gray-300 active:scale-100;
   }
