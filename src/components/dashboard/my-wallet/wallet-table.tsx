@@ -42,6 +42,7 @@ export const WalletTable = ({ data }: Props) => {
                     alt={coin.name}
                     width={32}
                     height={32}
+                    className="rounded-full"
                   />
 
                   <p>

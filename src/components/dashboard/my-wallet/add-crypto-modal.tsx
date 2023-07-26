@@ -87,6 +87,7 @@ export const AddCryptoModal = (): JSX.Element => {
             {...register('cryptoId')}
             onChange={value => setValue('cryptoId', value?.value || '')}
             optionWithArrow
+            placeholder="Choose"
           />
 
           {errors.cryptoId && (
