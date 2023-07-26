@@ -1,8 +1,9 @@
 import { getEnv } from '@/config/environment';
 import { ICoinInfo } from '@/interfaces/coin-info';
+import { ICoinVariation } from '@/interfaces/coin-variation';
 import { createHttpClient } from '@/lib/http-client';
 import { useQuery } from '@tanstack/react-query';
-import { GetCoinsResponse } from './types';
+import { GetCoinVariationResponse, GetCoinsResponse } from './types';
 
 const httpClient = createHttpClient(getEnv('COINCAP_BASE_URL'));
 
@@ -40,4 +41,25 @@ export const useGetTrendingCoins = () => {
 
 export const useGetCoins = (limit: number, ids: string[] = []) => {
   return useQuery(['coins', limit, ids], () => getCoins(0, limit, ids));
+};
+
+export const getCoinVariation = async (
+  id: string
+): Promise<{ info: ICoinInfo; variation: ICoinVariation[] }> => {
+  const { data } = await httpClient.get<GetCoinVariationResponse>(
+    `/v2/assets/${id}/history?interval=d1`
+  );
+
+  const info = await getCoins(0, 1, [id]);
+
+  const variation = data.data.map(item => ({
+    date: new Date(item.time),
+    price: Number(item.priceUsd)
+  }));
+
+  return { info: info[0], variation };
+};
+
+export const useGetCoinVariation = (id: string) => {
+  return useQuery(['coinVariation', id], () => getCoinVariation(id));
 };

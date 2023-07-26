@@ -11,7 +11,7 @@ export const WalletBalance = (): JSX.Element => {
 
   return (
     <div className="shadow-dashboard inline-flex w-full rounded-lg">
-      <div className="tablet:gap-4 deskop:py-6 desktop:pl-6 inline-flex w-[53%] items-center gap-2 py-2 pl-4">
+      <div className="tablet:gap-4 desktop:py-6 desktop:pl-6 inline-flex w-[53%] items-center gap-2 py-2 pl-4">
         <div className="bg-primary-100 desktop:p-3 tablet:p-[9px] rounded-full p-[6px]">
           <LegalScaleIcon className="desktop:box-size-[40px] tablet:box-size-[30px] box-size-[20px]" />
         </div>
