@@ -7,26 +7,31 @@ type Props = Omit<ComponentProps<'input'>, 'onChange'> & {
 };
 
 export const NumberInput = forwardRef<HTMLInputElement, Props>(
-  ({ name, onChange, min, ...rest }, ref): JSX.Element => {
-    const [value, setValue] = useState<number>();
+  ({ name, onChange, min = 0, max = Infinity, ...rest }, ref): JSX.Element => {
+    const [value, setValue] = useState<number>(0);
+    const minNumber = Number(min);
+    const maxNumber = Number(max);
+
+    const handleChange = useCallback(
+      (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = Number(event.target.value);
+        if (!isNaN(value) && value >= minNumber && value <= maxNumber) {
+          setValue(value);
+          onChange?.(value);
+        }
+      },
+      [maxNumber, minNumber, onChange]
+    );
 
     const handleIncrement = useCallback(() => {
-      setValue(prev => {
-        const value = (prev || 0) + 1;
-        onChange?.(value);
-        return value;
-      });
-    }, [onChange]);
+      setValue(prev => (prev + 1 <= maxNumber ? prev + 1 : prev));
+      onChange?.(value + 1);
+    }, [maxNumber, onChange, value]);
 
     const handleDecrement = useCallback(() => {
-      setValue(prev => {
-        const prevValue = prev || 0;
-        if (min !== undefined && prevValue <= Number(min)) return prev;
-        const value = prevValue - 1;
-        onChange?.(value);
-        return value;
-      });
-    }, [min, onChange]);
+      setValue(prev => (prev - 1 >= minNumber ? prev - 1 : prev));
+      onChange?.(value - 1);
+    }, [minNumber, onChange, value]);
 
     return (
       <div
@@ -44,11 +49,8 @@ export const NumberInput = forwardRef<HTMLInputElement, Props>(
           value={value}
           type="number"
           min={min}
-          onChange={e => {
-            const value = Number(e.target.value);
-            setValue(value);
-            onChange?.(value);
-          }}
+          max={max}
+          onChange={handleChange}
         />
         <div className="flex flex-col">
           <button className="group" type="button" onClick={handleIncrement}>

@@ -22,8 +22,14 @@ export type SignUpParams = {
   terms: boolean;
 };
 
-export const signUp = async (params: SignUpParams) => {
+export const signUp = async (params: SignUpParams): Promise<IUser> => {
   const { data } = await httpClient.post('/api/auth/signup', params);
 
   return data.user;
+};
+
+export const signOut = async (): Promise<boolean> => {
+  const { data } = await httpClient.get('/api/auth/logout');
+
+  return data.success;
 };
