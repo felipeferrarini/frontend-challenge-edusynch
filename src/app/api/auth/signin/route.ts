@@ -22,8 +22,10 @@ export async function POST(request: NextRequest) {
     return error;
   }
 
-  const cookieStorage = cookies();
-  cookieStorage.set('token', JSON.stringify(user));
+  const { password: _, ...userWithoutPassword } = user;
 
-  return NextResponse.json({ user });
+  const cookieStorage = cookies();
+  cookieStorage.set('token', JSON.stringify(userWithoutPassword));
+
+  return NextResponse.json({ user: userWithoutPassword });
 }

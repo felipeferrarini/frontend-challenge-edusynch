@@ -1,5 +1,5 @@
+import { IUser } from '@/interfaces/user';
 import { createHttpClient, getBaseUrl } from '@/lib/http-client';
-import { User } from '@prisma/client';
 
 const httpClient = createHttpClient(getBaseUrl());
 
@@ -8,7 +8,7 @@ export type SignInParams = {
   password: string;
 };
 
-export const signIn = async (params: SignInParams): Promise<User> => {
+export const signIn = async (params: SignInParams): Promise<IUser> => {
   const { data } = await httpClient.post('/api/auth/signin', params);
 
   return data.user;

@@ -18,5 +18,7 @@ export async function GET() {
     }
   });
 
-  return NextResponse.json({ user });
+  const { password: _, ...userWithoutPassword } = user || {};
+
+  return NextResponse.json({ user: userWithoutPassword });
 }

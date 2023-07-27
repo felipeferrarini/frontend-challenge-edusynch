@@ -16,11 +16,12 @@ export async function POST(request: NextRequest) {
     return responseError('Email already exists', 400);
   }
 
-  const user = await prismaClient.user.create({
+  const { password: _, ...user } = await prismaClient.user.create({
     data: {
       name,
       email,
-      password // in a real app, we would hash this
+      password, // in a real app, we would hash this
+      avatar: 'https://i.pravatar.cc/300' // in a real app, we would upload this
     }
   });
 

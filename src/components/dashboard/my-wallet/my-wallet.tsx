@@ -1,5 +1,6 @@
 'use client';
 
+import { Spinner } from '@/components/ui/common';
 import { CryptoWalletIcon } from '@/components/ui/icons';
 import { useGetWallet } from '@/services/wallet-service';
 import { AddCryptoModal } from './add-crypto-modal';
@@ -9,7 +10,7 @@ import { TransferModal } from './transfer-modal';
 import { WalletTable } from './wallet-table';
 
 export const MyWallet = (): JSX.Element => {
-  const { data = [] } = useGetWallet();
+  const { data = [], isFetching } = useGetWallet();
 
   return (
     <div className="tablet:shadow-dashboard tablet:bg-white flex min-h-[389px] flex-col rounded-lg">
@@ -23,9 +24,9 @@ export const MyWallet = (): JSX.Element => {
         <AddCryptoModal />
       </div>
 
-      {!data.length && <EmptyState />}
+      {!data.length && !isFetching && <EmptyState />}
 
-      {!!data.length && (
+      {!!data.length && !isFetching && (
         <>
           <div className="tablet:block hidden pt-6">
             <WalletTable data={data} />
@@ -37,6 +38,8 @@ export const MyWallet = (): JSX.Element => {
           </div>
         </>
       )}
+
+      {isFetching && <Spinner className="my-auto self-center" />}
 
       <TransferModal />
     </div>

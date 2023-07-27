@@ -1,13 +1,12 @@
 'use client';
 
+import { Spinner } from '@/components/ui/common';
 import { LegalScaleIcon } from '@/components/ui/icons';
 import { useGetWalletBalance } from '@/services/wallet-service';
 import { formatCurrency } from '@/utils/number-utils';
 
 export const WalletBalance = (): JSX.Element => {
-  const { data } = useGetWalletBalance();
-
-  const balance = data ?? 0;
+  const { data = 0, isFetching } = useGetWalletBalance();
 
   return (
     <div className="shadow-dashboard inline-flex w-full rounded-lg">
@@ -28,9 +27,12 @@ export const WalletBalance = (): JSX.Element => {
       </div>
 
       <div className="bg-primary-100 flex w-[47%] items-center justify-center rounded-r-lg">
-        <p className="desktop:heading-3 tablet:heading-4 body font-bold">
-          {formatCurrency(balance)}
-        </p>
+        {!isFetching && (
+          <p className="desktop:heading-3 tablet:heading-4 body font-bold">
+            {formatCurrency(data)}
+          </p>
+        )}
+        {isFetching && <Spinner />}
       </div>
     </div>
   );

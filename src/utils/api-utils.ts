@@ -1,4 +1,4 @@
-import { User } from '@prisma/client';
+import { IUser } from '@/interfaces/user';
 import { cookies } from 'next/headers';
 
 export const responseError = (message: string, status: number) => {
@@ -10,7 +10,7 @@ export const responseError = (message: string, status: number) => {
   });
 };
 
-export const getUserFromCookie = (): User | null => {
+export const getUserFromCookie = (): IUser | null => {
   const cookieStorage = cookies();
 
   const token = cookieStorage.get('token')?.value;
