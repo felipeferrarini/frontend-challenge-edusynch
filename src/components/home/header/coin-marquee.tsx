@@ -8,6 +8,8 @@ export const CoinMarquee = () => {
   const { viewportRef } = useCarouselMarquee();
   const { data = [] } = useGetTrendingCoins();
 
+  if (!data.length) return null;
+
   return (
     <div className="relative w-full py-1">
       <div className="w-full overflow-hidden" ref={viewportRef}>
