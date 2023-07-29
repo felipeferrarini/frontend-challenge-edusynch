@@ -1,34 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 📝 Descrição
 
-## Getting Started
+Projeto desenvolvido para o desafio de vaga de Desenvolvedor Frontend da Edusynch.
 
-First, run the development server:
+## 🚀 Tecnologias utilizadas
+
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Radix](https://www.radix-ui.com/)
+- [React Query](https://tanstack.com/query/latest/)
+- [Prisma](https://www.prisma.io/)
+- [Jotai](https://jotai.org/)
+
+Para a simulação das requisições via API, foi criada uma API real utilizando as [Api routes](https://nextjs.org/docs/app/building-your-application/routing/router-handlers) do Next.js em conjunto com o Prisma para o gerenciamento do banco de dados.
+
+## 🛠️ Instalação
+
+### Variáveis de ambiente
+
+Copie o arquivo `.env.example` para `.env.local`. Caso deseje conectar o projeto a um banco de dados real, substitua o valor da variável `DATABASE_URL` com a URL no formato do seu banco.
+
+### Instalando as dependências
+
+Rode o seguinte comando para instalar as dependências.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Após executar o comando, o Prisma client irá atualizar o banco de acordo com a schema localizada em `/prisma/schema.prisma`. Caso não tenha alterado o valor da variável `DATABASE_URL`, um arquivo SQL Lite será criado automaticamente para ser utilizado como banco de dados.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Testando a aplicação
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Rode o seguinte comando para iniciar a aplicação.
 
-## Learn More
+```bash
+yarn dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o projeto em ação.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Observações importantes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+A intenção deste projeto foi chegar o mais próximo possível de uma aplicação real, por isso foi feita a escolha de ter uma API e um banco de dados reais. Dado isso, para entrar na Dashboard (`/dashboard`), é necessário primeiro realizar o cadastro clicando em qualquer botão de `Sign up`.
