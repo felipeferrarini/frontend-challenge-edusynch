@@ -119,6 +119,7 @@ export const SignUpModal = (): JSX.Element => {
           <Form.Control asChild>
             <Checkbox
               id="terms"
+              className={errors.terms && ''}
               label={
                 <span className="tablet:label label-small">
                   I have read and accept the <strong>Privacy Policy</strong> and{' '}
