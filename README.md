@@ -2,7 +2,7 @@
 
 Projeto desenvolvido para o desafio de vaga de Desenvolvedor Frontend da Edusynch.
 
-O projeto pode ser visitado no endereço
+Foi realizado o deploy do projeto na [Vercel](https://vercel.com/) e pode ser acesso pelo [link](https://frontend-challenge-edusynch.vercel.app/)
 
 ## 🚀 Tecnologias utilizadas
 
